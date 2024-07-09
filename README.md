@@ -61,10 +61,11 @@ value_dji: 0.01079309
 
 ### Correlation matrix
 
-               value_ibovespa value_nikkei   value_dji
-value_ibovespa     1.00000000   0.03603319 -0.07886667
-value_nikkei       0.03603319   1.00000000  0.22697132
-value_dji         -0.07886667   0.22697132  1.00000000
+|                 | value_ibovespa | value_nikkei | value_dji  |
+|-----------------|----------------|--------------|------------|
+| **value_ibovespa** | 1.00000000     | 0.03603319   | -0.07886667 |
+| **value_nikkei**   | 0.03603319     | 1.00000000   | 0.22697132  |
+| **value_dji**      | -0.07886667    | 0.22697132   | 1.00000000  |
 
 ## Data Visualization (before model application)
 ### Histograms
