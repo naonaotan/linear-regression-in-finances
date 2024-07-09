@@ -39,6 +39,7 @@ Yes, data preprocessing was performed:
 
 ### Are there outliers present in the data?
 ![Desvpad](https://raw.githubusercontent.com/naonaotan/linear-regression-in-finances/main/desvio%20padr%C3%A3o.png)
+
 Yes, using the z-score method, it was evident that there are several outliers in the collected data. Visual representation via boxplots showed outliers exceeding the minimum and maximum bounds.
 
 ## Calculating Statistical Metrics of the Data
