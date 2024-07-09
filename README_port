@@ -1,0 +1,149 @@
+# Aplicando regressão linear em finanças. É possível prever o iBovespa a partir de outros índices da bolsa?
+## Objetivo
+Apresentação de um modelo de regressão linear/logística cuja finalidade seja prever o retorno do índice Bovespa em um determinado dia.
+
+## Fontes de dados
+### Quais foram os dados utilizados?
+
+Os dados analisados são as séries históricas de retorno do índice Bovespa, índices Dow Jones Industrial Average e Nikkei-225. 
+
+### Qual foi o período desses dados?
+
+O período dos dados é de 01/01/2012 até 01/01/2024.
+
+### Como esses dados foram coletados?
+
+Extraímos os dados da Ibovespa através da API da Yahoo! Finanças, e os dados dos índices Dow Jones e Nikkei-225 do site Macro Trends.
+- Dow Jones: [Macro Trends Dow Jones](https://www.macrotrends.net/1358/dow-jones-industrial-average-last-10-years#google_vignette)
+- Nikkei-225: [Macro Trends Nikkei-225](https://www.macrotrends.net/2593/nikkei-225-index-historical-chart-data)
+                                      
+## Ferramentas
+### Qual a linguagem de programação utilizada?
+
+Para realizar a análise, foi utilizada a linguagem Python para a extração dos dados da API e tratamento das bases, e a linguagem R para os cálculos estatísticos. 
+
+### Quais bibliotecas foram utilizadas?
+
+Python: yfinance, pandas, numpy, seaborn e matplotlib
+R: readr, dplyr, caret, ggplot2 e tidyr 
+
+### Foram utilizados softwares? Se sim, quais?
+
+Foram utilizados os softwares: posit, colab e canva. 
+
+## Tratamento de dados
+### Foram feitos tratamentos nos dados? Se sim, quais e por quê?
+Sim, foram feitos tratamentos. 
+Troca de vírgula por ponto nos números da base de dados para transformar os dados em valores numéricos
+Renomear as colunas para praticidade
+
+### Há a presença de outliers nos dados?
+![Desvpad](https://raw.githubusercontent.com/naonaotan/linear-regression-in-finances/main/desvio%20padr%C3%A3o.png)
+
+Sim, usando o método z_score ficou evidente que existem vários outliers nos dados  colhidos, aqui representados de forma gráfica pelos ponto mais acima e mais abaixo do gráfico de boxplot superando suas mínimas e máximas:
+
+Usando o comando length(outliers_zscore), identificamos um total de 94 outliers
+
+### Calcular métricas estatísticas dos dados
+Média
+                                      
+value_ibovespa: 0.0004039503
+
+value_nikkei: 0.0006214703
+
+value_dji: 0.0004709546
+                                      
+Desvio padrão
+                                      
+value_ibovespa: 0.01579165
+
+value_nikkei: 0.01323394
+
+value_dji: 0.01079309
+                                      
+Matriz de correlação
+                                      
+               value_ibovespa value_nikkei   value_dji
+value_ibovespa     1.00000000   0.03603319 -0.07886667
+value_nikkei       0.03603319   1.00000000  0.22697132
+value_dji         -0.07886667   0.22697132  1.00000000
+                                      
+## Visualização dos dados (antes da aplicação do modelo)
+Histogramas
+
+Gráficos de dispersão
+Matriz de correlação
+![Correlation matrix](https://raw.githubusercontent.com/naonaotan/linear-regression-in-finances/main/matriz%20correla%C3%A7%C3%A3o.png)
+                                      
+### Interpretar cada um dos gráficos
+Histogramas
+                                      
+- Ibovespa: O histograma do Ibovespa demonstra que a maioria das variações percentuais diárias (55%) se concentraram entre -0,05% e 0,05%, indicando um mercado relativamente estável no período analisado. As barras à direita (variações positivas) e à esquerda (variações negativas) indicam que, embora a maioria dos dias tenha apresentado pequenas oscilações, também ocorreram dias com quedas mais expressivas (até -0,15%) e subidas consideráveis (até 0,15%).
+- Nikkei em Evidência: O histograma do Nikkei revela que a maioria das variações percentuais diárias (60%) se concentraram entre 0% e 0,05%, indicando um mercado relativamente estável e com leve tendência de alta no período analisado.  A barra mais alta do histograma, à direita, indica que um dia específico apresentou um aumento expressivo no índice (acima de 0,05%), demonstrando um momento de grande otimismo no mercado.
+- Dow Jones: O histograma do Dow Jones expõe que a maioria das variações percentuais diárias (45%) se concentraram entre -0,05% e 0,05%, indicando um mercado relativamente estável. No entanto, as barras à direita e à esquerda indicam que também ocorreram dias com quedas mais expressivas (até -0,15%) e subidas consideráveis (até 0,10%), revelando um mercado mais volátil em comparação ao Ibovespa e Nikkei.
+
+Gráficos de dispersão
+![Scatter Plots1](https://raw.githubusercontent.com/naonaotan/linear-regression-in-finances/main/gr%C3%A1fico%20dispers%C3%A3o%20IBOV%20e%20NI225.png)
+![Scatter Plots2](https://raw.githubusercontent.com/naonaotan/linear-regression-in-finances/main/gr%C3%A1fico%20dispers%C3%A3o%20IBOV%20e%20DJI.png)
+![Scatter Plots3](https://raw.githubusercontent.com/naonaotan/linear-regression-in-finances/main/gr%C3%A1fico%20dispers%C3%A3o%20IBOV.png)
+Depois de aplicado o modelo
+![Scatter Plots4](https://raw.githubusercontent.com/naonaotan/linear-regression-in-finances/main/gr%C3%A1fico%20valores%20reais%20vs%20previstos.png)
+Matriz de correlação
+
+Fraca correlação com ambas variáveis escolhidas, sendo DJI e IBOV -0,08 e NI225 e IBOV 0,04. Essa fraca magnitude das correlações indica que a relação linear entre os índices é fraca.
+
+## Conclusão do relatório descritivo
+Mesmo sem aplicar o modelo, qual a expectativa do grupo em relação aos resultados?
+O grupo tem expectativa baixa quanto a assertividade do modelo, e preocupação de como ficarão as visualizações.
+
+## Apresentação do modelo
+### Variáveis explicativas
+### Quais são?
+DJI e NI-225.
+                                      
+### Por que o grupo as selecionou?
+Artigo científico realizado para estudo da relação entre as variáveis e também curiosidade quanto aos resultados.
+                                      
+### Qual a relevância econômica delas em relação ao Ibovespa?
+Pelo artigo Influência dos Índices Dow Jones Industrial Average e Nikkei-225 sobre o IBOVESPA (Gustavo Pena, Breno Guelman e Henrique Rabello). O Dow Jones e o Nikkei 225, influenciam o ritmo do Ibovespa, a bússola do mercado acionário brasileiro. Essa interconexão se dá pela integração à economia global, pela presença de investidores estrangeiros e pela influência de commodities e moedas. 
+No entanto, a relação é dinâmica, moldada pelo desempenho das economias, eventos geopolíticos e medidas governamentais. Compreender essa movimentação dos índices é essencial para navegar na volatilidade, no fluxo de investimentos e na percepção de risco do mercado, permitindo decisões mais assertivas para os investidores.
+
+### Modelo escolhido
+### Regressão linear ou logística?
+Regressão linear
+                                      
+### Por que optou por um ou por outro?
+Maior familiaridade com o modelo e indicação do professor de estatística na FAE.
+                                      
+### Apresentar a equação da reta/da sigmóide encontrada
+
+IBOV = 0,000425 - 0,134275.DJI + 0,067853.NI225
+
+### Desempenho do modelo
+### Qual foi o percentual de acerto?
+RMSE: 0.01460527 (1.46%)
+MAE: 0.01114098 (1.11%)
+MAPE: 114.9839%
+                                      
+### Qual foi o R² do modelo?
+0.01014757 ou 1.01%
+                                      
+### O grupo considera a performance do modelo satisfatória?
+Não.
+RMSE: 0.0146 - O Erro Quadrático Médio de Raiz (RMSE) é de 0.0146. Como o RMSE está em unidades do Ibovespa, um valor baixo (próximo de zero) indica boa precisão. Nesse caso, o erro médio de previsão do modelo é bem pequeno.
+MAE: 0.0111 - O Erro Médio Absoluto (MAE) é de 0.0111. Similar ao RMSE, um valor baixo indica boa precisão. O MAE representa a magnitude média do erro absoluto, sem considerar o quadrado do erro, e nesse caso, também é bem pequeno.
+MAPE: 114.98% - O Erro Percentual Absoluto Médio (MAPE) é de 114.98%. Atenção! Esse valor é alto e indica que o modelo pode não ser o ideal para prever o Ibovespa em porcentagem. O MAPE é sensível a valores próximos de zero, o que pode distorcer a interpretação da precisão.
+R²: 0.0101 - O Coeficiente de Determinação (R²) é de 0.0101. Um valor baixo de R² indica que o modelo explica apenas uma pequena parte da variância do Ibovespa (cerca de 1%). Isso sugere que as variáveis independentes (NI225 e DJI) usadas no modelo não são muito informativas para prever o Ibovespa.
+## Considerações Finais
+Os valores de RMSE e MAE indicam que o modelo consegue prever o Ibovespa com relativa precisão em termos de unidades do índice.
+No entanto, o alto valor de MAPE indica que o modelo não é adequado para prever mudanças percentuais no Ibovespa, especialmente para valores próximos de zero.
+O baixo valor de R² sugere que o modelo precisa de melhorias. É possível que outras variáveis independentes sejam mais informativas para prever o Ibovespa.
+### Melhoria do modelo
+O grupo deve escolher pelo menos uma das formas a seguir para tentar melhorar o modelo:
+Incluir novas variáveis explicativas
+Eliminar variáveis explicativas que podem estar distorcendo o modelo
+Analisar se o modelo que estamos usando é adequado pensando nos dados que temos
+### Qual foi a forma selecionada e como foi feita?
+Analisar se o modelo que estamos usando é adequado pensando nos dados que temos
+### A tentativa de melhoria realmente melhorou o modelo ou piorou?
+Não. Decidimos que o ideal é utilizar outras varáveis explicativas para um modelo com melhor resposta.
