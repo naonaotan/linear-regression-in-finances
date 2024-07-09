@@ -121,7 +121,7 @@ Linear regression.
 
 ### Why did you choose one over the other?
 
-Greater familiarity with the model and recommendation by Professor João Carlos.
+Greater familiarity with the model and recommendation by a statistic teacher of FAE, Professor João Carlos.
 
 ### Present the equation of the line/sigmoid found
 
