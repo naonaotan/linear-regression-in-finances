@@ -88,6 +88,7 @@ value_dji: 0.01079309
 Graphs 1, 2 and 3 are really difficult to interpret. It's possible to visualize the outliers only. 
 ### After Model Application
 ![Scatter Plots4](https://raw.githubusercontent.com/naonaotan/linear-regression-in-finances/main/gr%C3%A1fico%20valores%20reais%20vs%20previstos.png)
+
 We have a slightly better, though still not clear, view of the data.
 
 ### Correlation Matrix
