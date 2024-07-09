@@ -71,6 +71,9 @@ value_dji: 0.01079309
 ### Histograms
 
 ### Scatter plots
+![Scatter Plots1](https://raw.githubusercontent.com/naonaotan/linear-regression-in-finances/main/gr%C3%A1fico%20dispers%C3%A3o%20IBOV%20e%20NI225.png)
+![Scatter Plots2](https://raw.githubusercontent.com/naonaotan/linear-regression-in-finances/main/gr%C3%A1fico%20dispers%C3%A3o%20IBOV%20e%20DJI.png)
+![Scatter Plots3](https://raw.githubusercontent.com/naonaotan/linear-regression-in-finances/main/gr%C3%A1fico%20dispers%C3%A3o%20IBOV.png)
 ### Correlation matrix
 ![Correlation matrix](https://raw.githubusercontent.com/naonaotan/linear-regression-in-finances/main/matriz%20correla%C3%A7%C3%A3o.png)
 
@@ -82,11 +85,11 @@ value_dji: 0.01079309
 - Dow Jones: The histogram reveals that 45% of daily percentage variations were between -0.05% and 0.05%, indicating a stable market with more volatility compared to Bovespa and Nikkei.
 
 ### Scatter Plots
-![Scatter Plots1](https://raw.githubusercontent.com/naonaotan/linear-regression-in-finances/main/gr%C3%A1fico%20dispers%C3%A3o%20IBOV%20e%20NI225.png)
-![Scatter Plots2](https://raw.githubusercontent.com/naonaotan/linear-regression-in-finances/main/gr%C3%A1fico%20dispers%C3%A3o%20IBOV%20e%20DJI.png)
-![Scatter Plots3](https://raw.githubusercontent.com/naonaotan/linear-regression-in-finances/main/gr%C3%A1fico%20dispers%C3%A3o%20IBOV.png)
+Graphs 1, 2 and 3 are really difficult to interpret. It's possible to visualize the outliers only. 
 ### After Model Application
 ![Scatter Plots4](https://raw.githubusercontent.com/naonaotan/linear-regression-in-finances/main/gr%C3%A1fico%20valores%20reais%20vs%20previstos.png)
+We have a slightly better, though still not clear, view of the data.
+
 ### Correlation Matrix
 
 Weak correlation with both chosen variables, with DJI and IBOV at -0.08 and NI225 and IBOV at 0.04. This weak correlation suggests a weak linear relationship between the indices.
