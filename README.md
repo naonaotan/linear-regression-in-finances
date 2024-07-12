@@ -1,4 +1,4 @@
-# Applying linear regression in finances. Is it possible to predict the a stock market index?
+# Applying linear regression in finances. Is it possible to predict the a stock market index? (04/01/2024)
 We received the challenge of predicting the value of the stock market index Bovespa for the day based on the previous day and other variables using a predictive model. We chose the variables Nikkei-225 and Dow Jones Industrial Average.
 
 [Click here to view the Canva presentation](https://www.canva.com/design/DAGKfDna5Bs/y_-Lt_f7psf-Q-a9g1bwiw/edit?utm_content=DAGKfDna5Bs&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
